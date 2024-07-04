@@ -1,0 +1,51 @@
+﻿@model SemiDonutModel
+
+@{
+    ViewData["Title"] = "Semi Donut Chart";
+}
+
+<h2 class="ms-4">@ViewData["Title"]</h2>
+
+<div id="chart"></div><div id="chart"></div>
+
+@section scripts {
+    <script>
+        const _series = @JsonConvert.SerializeObject(Model.Series);
+
+        var options = {
+            series: _series,
+            chart: {
+                width: 380,
+                type: 'donut',
+            },
+            plotOptions: {
+                pie: {
+                    startAngle: -90,
+                    endAngle: 90,
+                    offsetY: 10
+                }
+            },
+            grid: {
+                padding: {
+                    bottom: -80
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

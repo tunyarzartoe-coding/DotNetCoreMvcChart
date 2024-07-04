@@ -18,5 +18,12 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Series = new List<int>() { 44, 55, 41, 17, 15 };
             return View(model);
         }
+
+        public IActionResult SemiDonutChart()
+        {
+            SemiDonutModel model = new SemiDonutModel();
+            model.Series = new List<int>() { 44, 55, 41, 17, 15 };
+            return View(model);
+        }
     }
 }
