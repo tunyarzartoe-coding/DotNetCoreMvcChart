@@ -1,5 +1,4 @@
-﻿
-@model SimplePieChartModel
+﻿@model SimplePieChartModel
 
 @{
     ViewData["Title"] = "Simple Pie Chart";
@@ -8,7 +7,7 @@
 <h2 class="ms-4">@ViewData["Title"]</h2>
 
 <div id="chart"></div>
-@section scripts{
+@section scripts {
     <script>
         const _series = @JsonConvert.SerializeObject(Model.Series);
         const _labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));

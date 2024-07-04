@@ -1,4 +1,4 @@
-﻿namespace DotNetCoreMvcChart.ApexChartsApp.Models
+﻿namespace DotNetCoreMvcChart.ApexChartsApp.Models.PieChart
 {
     public class SimplePieChartModel
     {
