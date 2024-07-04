@@ -1,0 +1,53 @@
+﻿@model MonochromePieChartModel
+
+@{
+    ViewData["Title"] = "Monochrome Pie Chart";
+}
+
+<h2 class="ms-4">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const _series = @JsonConvert.SerializeObject(Model.Series);
+        const _labels = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+        var options = {
+            series: _series,
+            chart: {
+                width: '50%',
+                type: 'pie',
+            },
+            labels: _labels,
+            theme: {
+                monochrome: {
+                    enabled: true
+                }
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        offset: -5
+                    }
+                }
+            },
+            // title: {
+            //     text: "Monochrome Pie"
+            // },
+            dataLabels: {
+                formatter(val, opts) {
+                    const name = opts.w.globals.labels[opts.seriesIndex]
+                    return [name, val.toFixed(1) + '%']
+                }
+            },
+            legend: {
+                show: false
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

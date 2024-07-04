@@ -32,5 +32,12 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Series = new List<int>() { 44, 55, 41, 17, 15 };
             return View(model);
         }
+        public IActionResult MonochromePieChart()
+        {
+            MonochromePieChartModel model = new MonochromePieChartModel();
+            model.Series = new List<int>() { 44, 55, 41, 17, 15 };
+            model.Labels = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            return View(model);
+        }
     }
 }
