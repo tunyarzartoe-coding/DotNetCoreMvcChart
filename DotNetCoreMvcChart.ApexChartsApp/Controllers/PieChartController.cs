@@ -39,5 +39,13 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Labels = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
             return View(model);
         }
+
+        public IActionResult PatternDonutChart()
+        {
+            PatternDonutChartModel model = new PatternDonutChartModel();
+            model.Series = new List<int>() { 44, 55, 41, 17, 15 };
+            model.Labels = new List<string>() { "Comedy", "Action", "SciFi", "Drama", "Horror" };
+            return View(model);
+        }
     }
 }
