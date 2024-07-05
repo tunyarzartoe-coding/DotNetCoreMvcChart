@@ -1,0 +1,69 @@
+﻿@model PieWithImageModel
+
+@{
+    ViewData["Title"] = "Pie Chart With Image";
+}
+
+<h2 class="ms-4">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const _series = @JsonConvert.SerializeObject(Model.Series);
+        const _src = @Html.Raw(JsonConvert.SerializeObject(Model.ImageSrcs));
+        var options = {
+            series: _series,
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            colors: ['#93C3EE', '#E5C6A0', '#669DB5', '#94A74A'],
+            fill: {
+                type: 'image',
+                opacity: 0.85,
+                image: {
+                    src:_src,
+                    // src: [
+                    //     '/Images/stripes.jpg',
+                    //     '/Images/4274635880_809a4b9d0d_z.jpg',
+                    //     '/Images/4679113782_ca13e2e6c0_z.jpg',
+                    //     '/Images/2979121308_59539a3898_z.jpg'
+                    // ],
+                    width: 25,
+                    height: 25
+                },
+            },
+            stroke: {
+                width: 4
+            },
+            dataLabels: {
+                enabled: true,
+                style: {
+                    colors: ['#111']
+                },
+                background: {
+                    enabled: true,
+                    foreColor: '#fff',
+                    borderWidth: 0
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

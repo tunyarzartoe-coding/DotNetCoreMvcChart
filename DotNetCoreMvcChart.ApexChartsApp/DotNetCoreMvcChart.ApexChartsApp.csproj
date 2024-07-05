@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Images\2979121308_59539a3898_z.jpg" />
+    <None Include="wwwroot\Images\4274635880_809a4b9d0d_z.jpg" />
+    <None Include="wwwroot\Images\4679113782_ca13e2e6c0_z.jpg" />
+    <None Include="wwwroot\Images\stripes.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
   </ItemGroup>
 
