@@ -1,5 +1,6 @@
 ﻿using DotNetCoreMvcChart.ApexChartsApp.Models.PieChart;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
 {
@@ -57,6 +58,13 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                         "/Images/4274635880_809a4b9d0d_z.jpg",
                         "/Images/4679113782_ca13e2e6c0_z.jpg",
                         "/Images/2979121308_59539a3898_z.jpg" };
+            return View(model);
+        }
+
+        public IActionResult DonutUpdateChart()
+        {
+            DonutUpdateChartModel model = new DonutUpdateChartModel();
+            model.Series = new List<int>() { 44, 55, 41, 17, 15 };
             return View(model);
         }
     }
