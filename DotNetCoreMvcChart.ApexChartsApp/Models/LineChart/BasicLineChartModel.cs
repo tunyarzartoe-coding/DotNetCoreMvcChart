@@ -1,4 +1,4 @@
-﻿namespace DotNetCoreMvcChart.ApexChartsApp.Models.LieChart
+﻿namespace DotNetCoreMvcChart.ApexChartsApp.Models.LineChart
 {
     public class BasicLineChartModel
     {
