@@ -1,0 +1,70 @@
+﻿
+@model GradientLineChartModel
+
+<div id="chart"></div>
+
+
+@section scripts {
+
+    <script>
+        const _data = @JsonConvert.SerializeObject(Model.Data);
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+
+        var options = {
+            series: [{
+                name: 'Sales',
+                data: _data,
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+            },
+            forecastDataPoints: {
+                count: 7
+            },
+            stroke: {
+                width: 5,
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: _categories,
+                tickAmount: 10,
+                labels: {
+                    formatter: function (value, timestamp, opts) {
+                        return opts.dateFormatter(new Date(timestamp), 'dd MMM')
+                    }
+                }
+            },
+            title: {
+                text: 'Forecast',
+                align: 'left',
+                style: {
+                    fontSize: "16px",
+                    color: '#666'
+                }
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    gradientToColors: ['#FDD835'],
+                    shadeIntensity: 1,
+                    type: 'horizontal',
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 100, 100, 100]
+                },
+            },
+            yaxis: {
+                min: -10,
+                max: 40
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}
