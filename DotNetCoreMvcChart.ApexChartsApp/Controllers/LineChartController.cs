@@ -51,5 +51,24 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Data = new List<int>() { 4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5 };
             return View(model);  
         }
+        public IActionResult DataLabelLineChart()
+        {
+            DataLabelLineChartModel model = new DataLabelLineChartModel();
+            model.Categories = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul" };
+            model.Series = new List<Datas> ()
+            { 
+                new Datas()
+                {
+                    Name = "High - 2013",
+                    Data =new List<int> { 28, 29, 33, 36, 32, 32, 33 }
+                },
+                new Datas()
+                {
+                    Name = "Low - 2013",
+                    Data =new List<int> { 12, 11, 14, 18, 17, 13, 13 }
+                }
+            };
+            return View(model);
+        }
     }
 }
