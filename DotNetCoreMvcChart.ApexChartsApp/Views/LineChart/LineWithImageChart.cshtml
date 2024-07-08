@@ -1,0 +1,80 @@
+﻿
+@model LineWithImageChartModel
+
+<div id="chart"></div>
+@section scripts {
+    <script>
+        const _seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.Series));
+        const _series = _seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            };
+        });
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        var options = {
+            series: _series,
+            chart: {
+                height: 350,
+                type: 'line',
+            },
+            stroke: {
+                width: 5,
+                curve: 'smooth'
+            },
+            colors: ['#2e93fa'],
+            xaxis: {
+                categories: _categories,
+                labels: {
+                    formatter: function (val) {
+                        return val
+                    }
+                }
+            },
+            title: {
+                text: 'Line Chart - Image fill',
+                align: 'left',
+                style: {
+                    fontSize: "16px",
+                }
+            },
+            fill: {
+                type: 'image',
+                image: {
+                    src: [
+                        '/Images/abstract.jpg'
+                    ],
+                    width: 800,
+                    height: 800
+                },
+            },
+            markers: {
+                size: 0,
+                opacity: 0,
+                colors: ['#fff'],
+                strokeColor: "#2e93fa",
+                strokeWidth: 2,
+                hover: {
+                    size: 8,
+                }
+            },
+            yaxis: {
+                title: {
+                    text: '$ (million)',
+                },
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                floating: true,
+                offsetY: -25,
+                offsetX: -5
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}

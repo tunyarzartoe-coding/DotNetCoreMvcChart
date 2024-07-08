@@ -70,5 +70,20 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult LineWithImageChart()
+        {
+            LineWithImageChartModel model = new LineWithImageChartModel();
+            model.Categories = new List<string>() { "1990", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005" };
+            model.Series = new List<LineDatas>()
+            {
+                new LineDatas()
+                {
+                    Name = "Dataset 2",
+                    Data =new List<int> { 10, 5, 20, 13, 15, 12, 13, 24, 24, 34, 7, 15, 10, 9, 26 }
+                }
+            };
+            return View(model);
+        }
     }
 }
