@@ -1,0 +1,101 @@
+﻿@model LogarithmicLineChartModel
+
+<div id="chart"></div>
+
+@section scripts{
+    <script>
+        var labelFormatter = function (value) {
+            var val = Math.abs(value)
+            if (val >= 100000) {
+                return (val / 1000000).toFixed(1) + ' M';
+            }
+            return val.toFixed(0);
+        }
+        const _seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
+
+        const _data = _seriesData.map(s => {
+            return {
+                x: s.X,
+                y: s.Y
+            };
+        });
+        var options = {
+            series: [{
+                name: "Logarithmic",
+                data: _data
+            }, {
+                name: "Linear",
+                data: _data
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            title: {
+                text: 'Logarithmic Scale',
+                align: 'left'
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: [
+                {
+                    min: 1000000,
+                    max: 500000000,
+                    tickAmount: 4,
+                    logarithmic: true,
+                    seriesName: 'Logarithmic',
+                    labels: {
+                        formatter: labelFormatter,
+                        style: {
+                            fontWeight: 900,
+                            colors: 'rgb(0, 143, 251)'
+                        }
+                    },
+                    title: {
+                        text: 'Logarithmic',
+                        style: {
+                            fontWeight: 900,
+                            color: 'rgb(0, 143, 251)'
+                        }
+                    }
+                },
+                {
+                    min: 1000000,
+                    max: 500000000,
+                    opposite: true,
+                    tickAmount: 4,
+                    seriesName: 'Linear',
+                    labels: {
+                        formatter: labelFormatter,
+                        style: {
+                            fontWeight: 900,
+                            colors: 'rgb(0, 227, 150)'
+                        }
+                    },
+                    title: {
+                        text: 'Linear',
+                        style: {
+                            fontWeight: 900,
+                            color: 'rgb(0, 227, 150)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}
