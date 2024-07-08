@@ -85,5 +85,30 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+
+        public IActionResult MissingDataLineChart()
+        {
+            MissingDataLineChartModel model = new MissingDataLineChartModel();
+            model.Series = new List<MissingData> 
+            {
+                new MissingData()
+                {
+                    Name = "Peter",
+                    Datas = new List<int?> { 5, 5, 10, 8, 7, 5, 4, null, null, null, 10, 10, 7, 8, 6, 9 }
+                },
+                new MissingData()
+                {
+                    Name = "Johnny",
+                    Datas = new List<int?> { 10, 15, null, 12, null, 10, 12, 15, null, null, 12, null, 14, null, null, null }
+                },
+                new MissingData()
+                {
+                    Name = "David",
+                    Datas = new List<int?> { null, null, null, null, 3, 4, 1, 3, 4, 6, 7, 9, 5, null, null, null }
+                },
+            };
+            model.Labels = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            return View(model);
+        }
     }
 }
