@@ -243,5 +243,9 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Datas = new List<int>() { 34, 44, 54, 21, 12, 43, 33, 23, 66, 66, 58 };
             return View(model);
         }
+        public IActionResult ZoomableTimeSeriesChart() 
+        { 
+            return View(); 
+        }
     }
 }
