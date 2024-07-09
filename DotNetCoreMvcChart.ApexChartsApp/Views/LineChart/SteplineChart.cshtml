@@ -1,0 +1,47 @@
+﻿
+@model SteplineChartModel
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+
+        // var ts2 = 1484418600000;
+        // var data = [];
+        // var spikes = [5, -5, 3, -3, 8, -8]
+        // for (var i = 0; i < 30; i++) {
+        //     ts2 = ts2 + 86400000;
+        //     var innerArr = [ts2, dataSeries[1][i].value];
+        //     data.push(innerArr)
+        // }
+
+        const _data = @JsonConvert.SerializeObject(Model.Datas);
+
+        var options = {
+            series: [{
+                data: _data
+            }],
+            chart: {
+                type: 'line',
+                height: 350
+            },
+            stroke: {
+                curve: 'stepline',
+            },
+            dataLabels: {
+                enabled: false
+            },
+            title: {
+                text: 'Stepline Chart',
+                align: 'left'
+            },
+            markers: {
+                hover: {
+                    sizeOffset: 4
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
