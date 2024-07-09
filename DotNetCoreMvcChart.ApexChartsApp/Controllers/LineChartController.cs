@@ -233,5 +233,9 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult RealtimeLineChart()
+        {
+            return View();
+        }
     }
 }
