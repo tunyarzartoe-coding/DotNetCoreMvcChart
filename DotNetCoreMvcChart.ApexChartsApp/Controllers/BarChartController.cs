@@ -1,4 +1,5 @@
-﻿using DotNetCoreMvcChart.ApexChartsApp.Models.BarChart;
+﻿using DotNetCoreMvcChart.ApexChartsApp.Models;
+using DotNetCoreMvcChart.ApexChartsApp.Models.BarChart;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
@@ -22,6 +23,38 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Categories = new List<int>() { 2001, 2002, 2003, 2004, 2005, 2006, 2007};
             model.Data1 = new List<int>() { 44, 55, 41, 64, 22, 43, 21 };
             model.Data2 = new List<int>() { 53, 32, 33, 52, 13, 44, 32 };
+            return View(model);
+        }
+        public IActionResult GroupedStackedBarChart()
+        {
+            GroupedStackedBarChartModel model = new GroupedStackedBarChartModel();
+            model.Series = new List<SeriesData>
+            { 
+                new SeriesData()
+                {
+                    Name = "Q1 Budget",
+                    Group = "budget",
+                    Datas = new List<int>() { 44000, 55000, 41000, 67000, 22000 }
+                },
+                new SeriesData()
+                {
+                    Name = "Q1 Actual",
+                    Group = "actual",
+                    Datas = new List<int>() { 48000, 50000, 40000, 65000, 25000 }
+                },
+                new SeriesData()
+                {
+                    Name = "Q2 Budget",
+                    Group = "budget",
+                    Datas = new List<int>() { 13000, 36000, 20000, 8000, 13000 }
+                },
+                new SeriesData()
+                {
+                    Name = "Q2 Actual",
+                    Group = "actual",
+                    Datas = new List<int>() { 20000, 40000, 25000, 10000, 12000 }
+                }
+            };
             return View(model);
         }
     }
