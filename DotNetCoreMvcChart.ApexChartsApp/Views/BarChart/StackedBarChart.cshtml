@@ -1,0 +1,84 @@
+﻿
+
+@model StackedBarChartModel
+
+@{
+    ViewData["Title"] = "Stacked Bar Chart";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.StackedDatas));
+        const _series = seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            }
+        });
+        const _categories = @JsonConvert.SerializeObject(Model.Categories);
+        var options = {
+            series: _series,
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    dataLabels: {
+                        total: {
+                            enabled: true,
+                            offsetX: 0,
+                            style: {
+                                fontSize: '13px',
+                                fontWeight: 900
+                            }
+                        }
+                    }
+                },
+            },
+            stroke: {
+                width: 1,
+                colors: ['#fff']
+            },
+            title: {
+                text: 'Fiction Books Sales'
+            },
+            xaxis: {
+                categories:_categories,
+                labels: {
+                    formatter: function (val) {
+                        return val + "K"
+                    }
+                }
+            },
+            yaxis: {
+                title: {
+                    text: undefined
+                },
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val + "K"
+                    }
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left',
+                offsetX: 40
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
