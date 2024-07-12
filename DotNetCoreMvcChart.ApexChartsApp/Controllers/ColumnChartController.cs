@@ -32,5 +32,19 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult DataLabelColumnChart()
+        {
+            DataLabelColumnChartModel model = new DataLabelColumnChartModel();
+            model.Categories = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            model.DataLabelColumnData = new List<DataLabelColumnData>
+            {
+                new DataLabelColumnData()
+                {
+                    Name= "Inflation",
+                    ColumnDatas = new List<double> { 2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2 }
+                }
+            };
+            return View(model);
+        }
     }
 }
