@@ -1,0 +1,76 @@
+﻿
+
+@model MakerBarChartModel
+
+@{
+    ViewData["Title"] = "Maker Bar Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts {
+    <script>
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model));
+        const _name = seriesData.Name;
+        const _data = seriesData.Data.map(d => {
+            return {
+                x: d.X,
+                y: d.Y,
+                goals: d.Goals.map(g => {
+                    return {
+                        name: g.Name,
+                        value: g.Value,
+                        strokeWidth: g.StrokeWidth,
+                        strokeHeight: g.StrokeHeight,
+                        strokeLineCap: g.StrokeLineCap,
+                        strokeColor: g.StrokeColor
+
+                    }
+                })
+            }
+        })
+        
+        var options = {
+            series: [
+                {
+                    name: _name,
+                    data: _data
+                }
+            ],
+            chart: {
+                height: 350,
+                type: 'bar'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            colors: ['#00E396'],
+            dataLabels: {
+                formatter: function (val, opt) {
+                    const goals =
+                        opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
+                            .goals
+
+                    if (goals && goals.length) {
+                        return `${val} / ${goals[0].value}`
+                    }
+                    return val
+                }
+            },
+            legend: {
+                show: true,
+                showForSingleSeries: true,
+                customLegendItems: ['Actual', 'Expected'],
+                markers: {
+                    fillColors: ['#00E396', '#775DD0']
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
