@@ -57,5 +57,37 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult PatternedBarChart()
+        {
+            PatternedBarChartModel model = new PatternedBarChartModel();
+            model.PatternedData = new List<PatternedData>
+            {
+                new PatternedData()
+                {
+                    Name= "Marine Sprite",
+                    Data= new List<int> { 44, 55, 41, 37, 22, 43, 21 }
+                },
+                 new PatternedData()
+                {
+                    Name= "Striking Calf",
+                    Data= new List<int> { 53, 32, 33, 52, 13, 43, 32 }
+                },
+                  new PatternedData()
+                {
+                    Name= "Tank Picture",
+                    Data= new List<int> { 12, 17, 11, 9, 15, 11, 20 }
+                },
+                   new PatternedData()
+                {
+                    Name= "Bucket Slope",
+                    Data= new List<int> { 9, 7, 5, 8, 6, 9, 4 }
+                }
+            };
+            model.Categories = new List<int>()
+            {
+                2008, 2009, 2010, 2011, 2012, 2013, 2014
+            };
+            return View(model);
+        }
     }
 }
