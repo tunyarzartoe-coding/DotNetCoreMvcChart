@@ -1,0 +1,78 @@
+﻿
+@model ImageBarChartModel
+@{
+    ViewData["Title"] = "Image Bar Chart";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const _name = @Html.Raw(JsonConvert.SerializeObject(Model.Name));
+        const _data = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
+        var options = {
+            series: [{
+                name: _name,
+                data: _data
+            }],
+            chart: {
+                type: 'bar',
+                height: 410,
+                animations: {
+                    enabled: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    barHeight: '100%',
+
+                },
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                colors: ["#fff"],
+                width: 0.2
+            },
+            labels: Array.apply(null, { length: 32 }).map(function (el, index) {
+                return index + 1;
+            }),
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    show: false
+                },
+                title: {
+                    text: 'Weight',
+                },
+            },
+            grid: {
+                position: 'back'
+            },
+            title: {
+                text: 'Paths filled by clipped image',
+                align: 'right',
+                offsetY: 30
+            },
+            fill: {
+                type: 'image',
+                opacity: 0.87,
+                image: {
+                    src: ['/Images/4274635880_809a4b9d0d_z.jpg'],
+                    width: 466,
+                    height: 406
+                }
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

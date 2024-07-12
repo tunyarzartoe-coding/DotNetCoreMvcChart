@@ -322,5 +322,16 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult ImageBarChart()
+        {
+            ImageBarChartModel model = new ImageBarChartModel();
+            model.Name = "coins";
+            model.Datas = new List<double>() 
+            { 
+                2, 4, 3, 4, 3, 5, 5, 6.5, 6, 5, 4, 5, 8, 7, 7, 8, 8, 10, 9, 9, 12, 12,
+                11, 12, 13, 14, 16, 14, 15, 17, 19, 21
+            };
+            return View(model);
+        }
     }
 }
