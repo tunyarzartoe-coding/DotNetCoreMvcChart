@@ -137,5 +137,40 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             model.Categories = new List<int>() { 2008, 2009, 2010, 2011, 2012, 2013, 2014 };
             return View(model);
         }
+        public IActionResult FullStackedBarChart()
+        {
+            FullStackedBarChartModel model = new FullStackedBarChartModel();
+            model.FullStackedDatas = new List<FullStackedData>
+            {
+                new FullStackedData()
+                {
+                    Name = "'Marine Sprite",
+                    Data = new List<int> { 44, 55, 41, 37, 22, 43, 21 }
+                },
+                new FullStackedData()
+                {
+                    Name = "Striking Calf",
+                    Data = new List<int> { 53, 32, 33, 52, 13, 43, 32 }
+                },
+                new FullStackedData()
+                {
+                    Name = "Tank Picture",
+                    Data = new List<int> { 12, 17, 11, 9, 15, 11, 20 }
+                },
+                new FullStackedData()
+                {
+                    Name = "Bucket Slope",
+                    Data = new List<int> { 9, 7, 5, 8, 6, 9, 4 }
+                },
+                new FullStackedData()
+                {
+                    Name = "Reborn Kid",
+                    Data = new List<int> { 25, 12, 19, 32, 25, 24, 10 }
+                }
+
+            };
+            model.Categories = new List<int>() { 2008, 2009, 2010, 2011, 2012, 2013, 2014 };
+            return View(model);
+        }
     }
 }

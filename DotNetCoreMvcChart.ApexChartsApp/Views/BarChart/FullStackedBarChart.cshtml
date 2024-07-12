@@ -1,0 +1,65 @@
+﻿
+@model FullStackedBarChartModel
+
+@{
+    ViewData["Title"] = "100% Stacked Bar Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.FullStackedDatas));
+        const _series = seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            }
+        });
+        const _categories = @JsonConvert.SerializeObject(Model.Categories);
+        var options = {
+            series: _series,
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                stackType: '100%'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                },
+            },
+            stroke: {
+                width: 1,
+                colors: ['#fff']
+            },
+            // title: {
+            //     text: '100% Stacked Bar'
+            // },
+            xaxis: {
+                categories: _categories,
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val + "K"
+                    }
+                }
+            },
+            fill: {
+                opacity: 1
+
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left',
+                offsetX: 40
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
