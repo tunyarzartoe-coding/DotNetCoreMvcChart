@@ -1,6 +1,7 @@
 ﻿using DotNetCoreMvcChart.ApexChartsApp.Models;
 using DotNetCoreMvcChart.ApexChartsApp.Models.BarChart;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 
 namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
 {
@@ -9,10 +10,10 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult BasicBarChart()
         {
             BasicBarChartModel model = new BasicBarChartModel();
-            model.Categories = new List<string>() 
+            model.Categories = new List<string>()
             {
                     "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
-                    "United States", "China", "Germany" 
+                    "United States", "China", "Germany"
             };
             model.Datas = new List<int>() { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380 };
             return View(model);
@@ -20,7 +21,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult GroupedBarChart()
         {
             GroupedBarChartModel model = new GroupedBarChartModel();
-            model.Categories = new List<int>() { 2001, 2002, 2003, 2004, 2005, 2006, 2007};
+            model.Categories = new List<int>() { 2001, 2002, 2003, 2004, 2005, 2006, 2007 };
             model.Data1 = new List<int>() { 44, 55, 41, 64, 22, 43, 21 };
             model.Data2 = new List<int>() { 53, 32, 33, 52, 13, 44, 32 };
             return View(model);
@@ -29,7 +30,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             GroupedStackedBarChartModel model = new GroupedStackedBarChartModel();
             model.Series = new List<SeriesData>
-            { 
+            {
                 new SeriesData()
                 {
                     Name = "Q1 Budget",
@@ -92,8 +93,8 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult ReversedBarChart()
         {
             ReversedBarChartModel model = new ReversedBarChartModel();
-            model.Data = new List<ReversedBarData> 
-            { 
+            model.Data = new List<ReversedBarData>
+            {
                 new ReversedBarData()
                 {
                     Data= new List<int> { 400, 430, 448, 470, 540, 580, 690 }
@@ -105,11 +106,11 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult StackedBarChart()
         {
             StackedBarChartModel model = new StackedBarChartModel();
-            model.StackedDatas = new List<StackedData> 
-            { 
+            model.StackedDatas = new List<StackedData>
+            {
                 new StackedData()
                 {
-                    Name = "'Marine Sprite",
+                    Name = "Marine Sprite",
                     Data = new List<int> { 44, 55, 41, 37, 22, 43, 21 }
                 },
                 new StackedData()
@@ -144,7 +145,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             {
                 new FullStackedData()
                 {
-                    Name = "'Marine Sprite",
+                    Name = "Marine Sprite",
                     Data = new List<int> { 44, 55, 41, 37, 22, 43, 21 }
                 },
                 new FullStackedData()
@@ -170,6 +171,31 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
 
             };
             model.Categories = new List<int>() { 2008, 2009, 2010, 2011, 2012, 2013, 2014 };
+            return View(model);
+        }
+        public IActionResult NegativeBarChart()
+        {
+            NegativeBarChartModel model = new NegativeBarChartModel();
+            model.NegativeBarChartDatas = new List<NegativeBarChartData>
+            {
+                new NegativeBarChartData()
+                {
+                   Name ="Males",
+                   Data = new List<double> (){0.4, 0.65, 0.76, 0.88, 1.5, 2.1, 2.9, 3.8, 3.9, 4.2, 4, 4.3, 4.1, 4.2, 4.5,
+                   3.9, 3.5, 3}
+                },
+                new NegativeBarChartData()
+                {
+                   Name ="Females",
+                   Data = new List<double> (){-0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4,
+            -4.1, -4, -4.1, -3.4, -3.1, -2.8}
+                },
+            };
+            model.Categories = new List<string>()
+            {
+                    "85+", "80-84", "75-79", "70-74", "65-69", "60-64", "55-59", "50-54", "45-49",
+                    "40-44", "35-39", "30-34", "25-29", "20-24", "15-19", "10-14","5-9","0-4"
+            };
             return View(model);
         }
     }

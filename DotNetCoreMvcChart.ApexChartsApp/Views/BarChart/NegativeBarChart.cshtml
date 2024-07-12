@@ -1,0 +1,88 @@
+﻿
+
+@model NegativeBarChartModel
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.NegativeBarChartDatas));
+        const _series = seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            }
+        });
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        var options = {
+            series: _series,
+            chart: {
+                type: 'bar',
+                height: 440,
+                stacked: true
+            },
+            colors: ['#008FFB', '#FF4560'],
+            plotOptions: {
+                bar: {
+                    borderRadius: 5,
+                    borderRadiusApplication: 'end', // 'around', 'end'
+                    borderRadiusWhenStacked: 'all', // 'all', 'last'
+                    horizontal: true,
+                    barHeight: '80%',
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                width: 1,
+                colors: ["#fff"]
+            },
+
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: false
+                    }
+                }
+            },
+            yaxis: {
+                min: -5,
+                max: 5,
+                title: {
+                    // text: 'Age',
+                },
+            },
+            tooltip: {
+                shared: false,
+                x: {
+                    formatter: function (val) {
+                        return val
+                    }
+                },
+                y: {
+                    formatter: function (val) {
+                        return Math.abs(val) + "%"
+                    }
+                }
+            },
+            title: {
+                text: 'Mauritius population pyramid 2011'
+            },
+            xaxis: {
+                categories:_categories,
+                title: {
+                    text: 'Percent'
+                },
+                labels: {
+                    formatter: function (val) {
+                        return Math.abs(Math.round(val)) + "%"
+                    }
+                }
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
