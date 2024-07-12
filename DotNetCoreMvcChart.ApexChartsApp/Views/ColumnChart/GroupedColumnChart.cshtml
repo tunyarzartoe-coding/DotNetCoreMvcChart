@@ -1,0 +1,65 @@
+﻿@model GroupedColumnChartModel
+
+@{
+    ViewData["Title"] = "Grouped Column Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const _name = @Html.Raw(JsonConvert.SerializeObject(Model.Name));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.GroupedData));
+
+        const _data = seriesData.map(s => {
+            return {
+                x: s.X,
+                y: s.Y
+            };
+        });
+
+        var options = {
+            series: [{
+                name: _name,
+                data: _data
+            }],
+            chart: {
+                type: 'bar',
+                height: 380
+            },
+            xaxis: {
+                type: 'category',
+                labels: {
+                    formatter: function (val) {
+                        return "Q" + dayjs(val).quarter();
+                    }
+                },
+                group: {
+                    style: {
+                        fontSize: '10px',
+                        fontWeight: 700
+                    },
+                    groups: [
+                        { title: '2019', cols: 4 },
+                        { title: '2020', cols: 4 }
+                    ]
+                }
+            },
+            title: {
+                text: 'Grouped Labels on the X-axis',
+            },
+            tooltip: {
+                x: {
+                    formatter: function (val) {
+                        return "Q" + dayjs(val).quarter() + " " + dayjs(val).format("YYYY");
+                    }
+                }
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

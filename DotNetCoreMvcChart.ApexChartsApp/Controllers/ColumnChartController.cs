@@ -46,5 +46,23 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult GroupedColumnChart()
+        {
+            GroupedColumnChartModel model = new GroupedColumnChartModel();
+            model.Name = "Sales";
+            model.GroupedData = new List<GroupedData>
+            {
+                new GroupedData() { X = "2019/01/01", Y = 400 },
+                new GroupedData() { X = "2019/04/01", Y = 430 },
+                new GroupedData() { X = "2019/07/01", Y = 448 },
+                new GroupedData() { X = "2019/10/01", Y = 470 },
+                new GroupedData() { X = "2020/01/01", Y = 540 },
+                new GroupedData() { X = "2020/04/01", Y = 580 },
+                new GroupedData() { X = "2020/07/01", Y = 690 },
+                new GroupedData() { X = "2020/10/01", Y = 590 }
+            };
+            return View(model);
+        }
+
     }
 }
