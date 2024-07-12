@@ -89,5 +89,18 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult ReversedBarChart()
+        {
+            ReversedBarChartModel model = new ReversedBarChartModel();
+            model.Data = new List<ReversedBarData> 
+            { 
+                new ReversedBarData()
+                {
+                    Data= new List<int> { 400, 430, 448, 470, 540, 580, 690 }
+                }
+            };
+            model.Categories = new List<string>() { "June", "July", "August", "September", "October", "November", "December" };
+            return View(model);
+        }
     }
 }

@@ -1,0 +1,80 @@
+﻿
+@model ReversedBarChartModel
+
+@{
+    ViewData["Title"] = "Reversed Bar Chart Model";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+
+    <script>
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.Data));
+        const _series = seriesData.map(s => {
+            return {
+                data : s.Data
+            }
+        })
+        var options = {
+            series:_series,
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            annotations: {
+                xaxis: [{
+                    x: 500,
+                    borderColor: '#00E396',
+                    label: {
+                        borderColor: '#00E396',
+                        style: {
+                            color: '#fff',
+                            background: '#00E396',
+                        },
+                        text: 'X annotation',
+                    }
+                }],
+                yaxis: [{
+                    y: 'July',
+                    y2: 'September',
+                    label: {
+                        text: 'Y annotation'
+                    }
+                }]
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            dataLabels: {
+                enabled: true
+            },
+            xaxis: {
+                categories: _categories,
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            yaxis: {
+                reversed: true,
+                axisTicks: {
+                    show: true
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+    </script>
+}
