@@ -326,10 +326,26 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             ImageBarChartModel model = new ImageBarChartModel();
             model.Name = "coins";
-            model.Datas = new List<double>() 
-            { 
+            model.Datas = new List<double>()
+            {
                 2, 4, 3, 4, 3, 5, 5, 6.5, 6, 5, 4, 5, 8, 7, 7, 8, 8, 10, 9, 9, 12, 12,
                 11, 12, 13, 14, 16, 14, 15, 17, 19, 21
+            };
+            return View(model);
+        }
+        public IActionResult DataLabelBarChart()
+        {
+            DataLabelChartModel model = new DataLabelChartModel();
+            model.Datas = new List<int>() { 400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380 };
+            model.Colors = new List<string>()
+            {
+                "#33b2df", "#546E7A", "#d4526e", "#13d8aa", "#A5978B", "#2b908f", "#f9a3a4", "#90ee7e",
+                "#f48024", "#69d2e7"
+            };
+            model.Categories = new List<string>()
+            {
+                "South Korea", "Canada", "United Kingdom", "Netherlands", "Italy", "France", "Japan",
+                "United States", "China", "India"
             };
             return View(model);
         }
