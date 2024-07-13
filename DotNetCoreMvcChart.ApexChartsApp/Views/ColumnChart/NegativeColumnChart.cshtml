@@ -1,0 +1,67 @@
+﻿@model NegativeColumnChartModel
+
+@{
+    ViewData["Title"] = "Negative Column Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"> </div>
+
+@section scripts {
+    <script>
+        const _name = @Html.Raw(JsonConvert.SerializeObject(Model.Name));
+        const _data = @Html.Raw(JsonConvert.SerializeObject(Model.Data));
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+
+        var options = {
+            series: [{
+                name:_name,
+                data:_data
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    colors: {
+                        ranges: [{
+                            from: -100,
+                            to: -46,
+                            color: '#F15B46'
+                        }, {
+                            from: -45,
+                            to: 0,
+                            color: '#FEB019'
+                        }]
+                    },
+                    columnWidth: '80%',
+                }
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            yaxis: {
+                title: {
+                    text: 'Growth',
+                },
+                labels: {
+                    formatter: function (y) {
+                        return y.toFixed(0) + "%";
+                    }
+                }
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: _categories,
+                labels: {
+                    rotate: -90
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
