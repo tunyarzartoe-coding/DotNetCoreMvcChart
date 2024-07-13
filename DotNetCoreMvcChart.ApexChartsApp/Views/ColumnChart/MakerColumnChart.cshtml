@@ -1,9 +1,8 @@
 ﻿
-
-@model MakerBarChartModel
+@model MakerColumnChartModel
 
 @{
-    ViewData["Title"] = "Maker Bar Chart";
+    ViewData["Title"] = "Column with markers chart";
 }
 
 <h2 class="text-center">@ViewData["Title"]</h2>
@@ -22,7 +21,7 @@
                         name: g.Name,
                         value: g.Value,
                         strokeWidth: g.StrokeWidth,
-                        // strokeHeight: g.StrokeHeight,
+                        strokeHeight: g.StrokeHeight,
                         strokeLineCap: g.StrokeLineCap,
                         strokeDashArray: g.StrokeDashArray,
                         strokeColor: g.StrokeColor
@@ -31,35 +30,27 @@
                 })
             }
         })
-        
+
         var options = {
-            series: [
+            series: 
+            [
                 {
                     name: _name,
                     data: _data
                 }
-            ],
-            chart: {
+            ]
+            , chart: {
                 height: 350,
                 type: 'bar'
             },
             plotOptions: {
                 bar: {
-                    horizontal: true,
+                    columnWidth: '60%'
                 }
             },
             colors: ['#00E396'],
             dataLabels: {
-                formatter: function (val, opt) {
-                    const goals =
-                        opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
-                            .goals
-
-                    if (goals && goals.length) {
-                        return `${val} / ${goals[0].value}`
-                    }
-                    return val
-                }
+                enabled: false
             },
             legend: {
                 show: true,

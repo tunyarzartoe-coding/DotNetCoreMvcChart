@@ -63,6 +63,159 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult MakerColumnChart()
+        {
+            MakerColumnChartModel model = new MakerColumnChartModel();
+            model.Name = "Actual";
+            model.Data = new List<MakerData>
+            {
+                new MakerData()
+                {
+                    X = "2011",
+                    Y=1292,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 1400,
+                            StrokeHeight= 5,
+                            //StrokeLineCap="",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2012",
+                    Y=4432,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 5400,
+                            StrokeHeight= 5,
+                            //StrokeDashArray= 10,
+                            //StrokeLineCap="",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2013",
+                    Y=5423,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 5200,
+                            StrokeHeight= 5,
+                            //StrokeDashArray= 0,
+                            //StrokeLineCap="round",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2014",
+                    Y=6653,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 6500,
+                            StrokeHeight= 5,
+                            //StrokeDashArray= 0,
+                            //StrokeLineCap="round",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2015",
+                    Y=8133,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 6600,
+                            StrokeHeight= 13,
+                            StrokeWidth= 0,
+                            //StrokeDashArray= 0,
+                            StrokeLineCap="round",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2016",
+                    Y=7132,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 7500,
+                            StrokeHeight= 5,
+                            //StrokeDashArray= 10,
+                            //StrokeLineCap="",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2017",
+                    Y=7332,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 8700,
+                            StrokeHeight= 5,
+                            //StrokeDashArray= 10,
+                            //StrokeLineCap="",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+                new MakerData()
+                {
+                    X = "2018",
+                    Y=6553,
+                    Goals = new List<Goals>
+                    {
+                        new Goals()
+                        {
+                            Name= "Expected",
+                            Value= 7300,
+                            StrokeHeight= 2,
+                            StrokeDashArray= 2,
+                            //StrokeLineCap="",
+                            StrokeColor= "#775DD0"
+                        }
+                    }
+
+                },
+            };
+            return View(model);
+        }
 
     }
 }
