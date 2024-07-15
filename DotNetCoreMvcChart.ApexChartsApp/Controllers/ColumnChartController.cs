@@ -219,18 +219,18 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult NegativeColumnChart()
         {
             NegativeColumnChartModel model = new NegativeColumnChartModel();
-            model.Categories = new List<string>() 
+            model.Categories = new List<string>()
             {
                     "2011-01-01", "2011-02-01", "2011-03-01", "2011-04-01", "2011-05-01", "2011-06-01",
                     "2011-07-01", "2011-08-01", "2011-09-01", "2011-10-01", "2011-11-01", "2011-12-01",
                     "2012-01-01", "2012-02-01", "2012-03-01", "2012-04-01", "2012-05-01", "2012-06-01",
                     "2012-07-01", "2012-08-01", "2012-09-01", "2012-10-01", "2012-11-01", "2012-12-01",
                     "2013-01-01", "2013-02-01", "2013-03-01", "2013-04-01", "2013-05-01", "2013-06-01",
-                    "2013-07-01", "2013-08-01", "2013-09-01" 
+                    "2013-07-01", "2013-08-01", "2013-09-01"
             };
             model.Name = "Cash Flow";
             model.Data = new List<double>()
-            {       
+            {
                     1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
                     5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
                     48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
@@ -241,20 +241,20 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             RotatedDataLabelsColumnChartModel model = new RotatedDataLabelsColumnChartModel();
             model.Name = "Cash Flow";
-            model.Datas = new List<double>() 
+            model.Datas = new List<double>()
             {
                     1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
                     5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
                     48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
             };
-            model.Categories = new List<string>() 
+            model.Categories = new List<string>()
             {
                     "2011-01-01", "2011-02-01", "2011-03-01", "2011-04-01", "2011-05-01", "2011-06-01",
                     "2011-07-01", "2011-08-01", "2011-09-01", "2011-10-01", "2011-11-01", "2011-12-01",
                     "2012-01-01", "2012-02-01", "2012-03-01", "2012-04-01", "2012-05-01", "2012-06-01",
                     "2012-07-01", "2012-08-01", "2012-09-01", "2012-10-01", "2012-11-01", "2012-12-01",
                     "2013-01-01", "2013-02-01", "2013-03-01", "2013-04-01", "2013-05-01", "2013-06-01",
-                    "2013-07-01", "2013-08-01", "2013-09-01" 
+                    "2013-07-01", "2013-08-01", "2013-09-01"
             };
             return View(model);
         }
@@ -262,12 +262,12 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             RotatedLabelsColumnChartModel model = new RotatedLabelsColumnChartModel();
             model.Name = "Servings";
-            model.Labels = new List<string>() 
+            model.Labels = new List<string>()
             {
                     "Apples", "Oranges", "Strawberries", "Pineapples", "Mangoes", "Bananas",
                     "Blackberries", "Pears", "Watermelons", "Cherries", "Pomegranates", "Tangerines", "Papayas"
             };
-            model.Datas = new List<int>() 
+            model.Datas = new List<int>()
             {
                     44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35
             };
@@ -277,8 +277,8 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             DataColorColumnChartModel model = new DataColorColumnChartModel();
             model.Name = "Yearly Profit";
-            model.Datas = new List<ColumnDataColors> 
-            { 
+            model.Datas = new List<ColumnDataColors>
+            {
                 new ColumnDataColors()
                 {
                     X= "2011",
@@ -334,7 +334,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult DistributedColumnChart()
         {
             DistributedColumnChartModel model = new DistributedColumnChartModel();
-            model.Colors = new List<string>() 
+            model.Colors = new List<string>()
             {
                     "#008FFB",
                     "#00E396",
@@ -343,10 +343,10 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                     "#775DD0",
                     "#546E7A",
                     "#26a69a",
-                    "#D10CE8" 
+                    "#D10CE8"
             };
             model.Datas = new List<int>() { 21, 22, 10, 28, 16, 21, 13, 30 };
-            model.Categories = new List<Category> 
+            model.Categories = new List<Category>
             {
                     new Category()
                     {
@@ -357,12 +357,12 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                     {
                         FirstName = "Joe",
                         LastName =  "Smith"
-                    }, 
+                    },
                     new Category()
                     {
                         FirstName = "Jake",
                         LastName =  "Williams"
-                    }, 
+                    },
                     new Category()
                     {
                         FirstName = "Amber"
@@ -393,7 +393,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult DumbbellColumnChart()
         {
             DumbbellColumnChartModel model = new DumbbellColumnChartModel();
-            model.Datas = new List<DumbbellColumnDatas>() 
+            model.Datas = new List<DumbbellColumnDatas>()
             {
                 new DumbbellColumnDatas()
                 {
@@ -430,6 +430,186 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                     X = "2014",
                     Y = new List<int>(){ 4100, 5600 }
                 }
+            };
+            return View(model);
+        }
+        public IActionResult DynamicLoadedColumnChart()
+        {
+            DynamicLoadedColumnChartModel model = new DynamicLoadedColumnChartModel();
+            model.Colors = new List<string>()
+            {
+                    "#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0", "#00D9E9", "#FF66C3"
+            };
+            model.Data = new List<ArrayData>
+            {
+                new ArrayData()
+                {
+                    Y = 400,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =120
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =90
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =100
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =90
+                        }
+                    }
+
+                },
+                new ArrayData()
+                {
+                    Y = 430,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =120
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =110
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =90
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =110
+                        }
+                    }
+
+                },
+                new ArrayData()
+                {
+                    Y = 448,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =70
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =100
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =140
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =138
+                        }
+                    }
+
+                },
+                new ArrayData()
+                {
+                    Y = 470,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =150
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =60
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =190
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =70
+                        }
+                    }
+
+                },
+                new ArrayData()
+                {
+                    Y = 540,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =120
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =120
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =130
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =170
+                        }
+                    }
+
+                },
+                new ArrayData()
+                {
+                    Y = 580,
+                    Quarter = new List<QuarterData>()
+                    {
+                        new QuarterData()
+                        {
+                            QuarterX ="Q1",
+                            QuarterY =170
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q2",
+                            QuarterY =130
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q3",
+                            QuarterY =120
+                        },
+                        new QuarterData()
+                        {
+                            QuarterX ="Q4",
+                            QuarterY =160
+                        }
+                    }
+
+                },
             };
             return View(model);
         }
