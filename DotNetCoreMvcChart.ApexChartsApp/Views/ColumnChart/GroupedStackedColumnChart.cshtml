@@ -1,0 +1,65 @@
+﻿@model GroupedStackedColumnChartModel
+
+@{
+    ViewData["Title"] = "Grouped Stacked Column Chart";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts {
+    <script>
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.SeriesData));
+        const _series = seriesData.map(s => {
+            return {
+                name : s.Name,
+                group : s.Group,
+                data : s.Data
+            }
+        })
+
+        var options = {
+            series: _series,
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+            },
+            stroke: {
+                width: 1,
+                colors: ['#fff']
+            },
+            dataLabels: {
+                formatter: (val) => {
+                    return val / 1000 + 'K'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false
+                }
+            },
+            xaxis: {
+                categories: _categories
+            },
+            fill: {
+                opacity: 1
+            },
+            colors: ['#80c7fd', '#008FFB', '#80f1cb', '#00E396'],
+            yaxis: {
+                labels: {
+                    formatter: (val) => {
+                        return val / 1000 + 'K'
+                    }
+                }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

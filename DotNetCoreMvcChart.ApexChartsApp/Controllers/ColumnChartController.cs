@@ -613,5 +613,46 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult GroupedStackedColumnChart()
+        {
+            GroupedStackedColumnChartModel model = new GroupedStackedColumnChartModel();
+            model.Categories = new List<string>() 
+            {
+                    "Online advertising",
+                    "Sales Training",
+                    "Print advertising",
+                    "Catalogs",
+                    "Meetings",
+                    "Public relations"
+            };
+            model.SeriesData= new List<GroupedSeriesData> 
+            { 
+                new GroupedSeriesData()
+                {
+                    Name = "Q1 Budget",
+                    Group = "budget",
+                    Data = new List<int> (){ 44000, 55000, 41000, 67000, 22000, 43000 }
+                },
+                new GroupedSeriesData()
+                {
+                    Name = "Q1 Actual",
+                    Group = "actual",
+                    Data = new List<int> (){ 48000, 50000, 40000, 65000, 25000, 40000 }
+                },
+                new GroupedSeriesData()
+                {
+                    Name = "Q2 Budget",
+                    Group = "budget",
+                    Data = new List<int> (){ 13000, 36000, 20000, 8000, 13000, 27000 }
+                },
+                new GroupedSeriesData()
+                {
+                    Name = "Q2 Actual",
+                    Group = "actual",
+                    Data = new List<int> (){ 20000, 40000, 25000, 10000, 12000, 28000 }
+                },
+            };
+            return View(model);
+        }
     }
 }
