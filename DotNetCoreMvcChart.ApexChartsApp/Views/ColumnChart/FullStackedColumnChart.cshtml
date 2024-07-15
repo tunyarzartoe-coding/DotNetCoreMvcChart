@@ -1,0 +1,54 @@
+﻿@model FullStackedColumnChartModel
+
+@{
+    ViewData["Title"] = "Full Stacked Column Chart";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+
+@section scripts {
+    <script>
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.SeriesData));
+        const _series = seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            }
+        })
+        var options = {
+            series: _series,
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                stackType: '100%'
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        position: 'bottom',
+                        offsetX: -10,
+                        offsetY: 0
+                    }
+                }
+            }],
+            xaxis: {
+                categories: _categories,
+            },
+            fill: {
+                opacity: 1
+            },
+            legend: {
+                position: 'right',
+                offsetX: 0,
+                offsetY: 50
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

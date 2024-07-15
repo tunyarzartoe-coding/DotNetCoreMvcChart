@@ -738,5 +738,33 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult FullStackedColumnChart() 
+        {
+            FullStackedColumnChartModel model = new  FullStackedColumnChartModel();
+            model.Categories = new List<string>()
+            {
+                    "2011 Q1", "2011 Q2", "2011 Q3", "2011 Q4", "2012 Q1", "2012 Q2",
+                    "2012 Q3", "2012 Q4"
+            };
+            model.SeriesData = new List<FullSeriesData>()
+            {
+                new FullSeriesData()
+                {
+                    Name = "PRODUCT A",
+                    Data = new List<int>(){ 44, 55, 41, 67, 22, 43, 21, 49 }
+                },
+                new FullSeriesData()
+                {
+                    Name = "PRODUCT B",
+                    Data = new List<int>(){ 13, 23, 20, 8, 13, 27, 33, 12 }
+                },
+                new FullSeriesData()
+                {
+                    Name = "PRODUCT C",
+                    Data = new List<int>(){ 11, 17, 15, 15, 21, 14, 15, 13 }
+                }
+            };
+            return View(model);
+        }
     }
 }
