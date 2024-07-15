@@ -331,5 +331,64 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult DistributedColumnChart()
+        {
+            DistributedColumnChartModel model = new DistributedColumnChartModel();
+            model.Colors = new List<string>() 
+            {
+                    "#008FFB",
+                    "#00E396",
+                    "#FEB019",
+                    "#FF4560",
+                    "#775DD0",
+                    "#546E7A",
+                    "#26a69a",
+                    "#D10CE8" 
+            };
+            model.Datas = new List<int>() { 21, 22, 10, 28, 16, 21, 13, 30 };
+            model.Categories = new List<Category> 
+            {
+                    new Category()
+                    {
+                        FirstName = "John",
+                        LastName =  "Doe"
+                    },
+                    new Category()
+                    {
+                        FirstName = "Joe",
+                        LastName =  "Smith"
+                    }, 
+                    new Category()
+                    {
+                        FirstName = "Jake",
+                        LastName =  "Williams"
+                    }, 
+                    new Category()
+                    {
+                        FirstName = "Amber"
+                    },
+                    new Category()
+                    {
+                        FirstName = "Peter",
+                        LastName =  "Brown"
+                    },
+                    new Category()
+                    {
+                        FirstName = "Mary",
+                        LastName =  "Evans"
+                    },
+                    new Category()
+                    {
+                        FirstName = "David",
+                        LastName =  "Wilson"
+                    },
+                    new Category()
+                    {
+                        FirstName = "Lily",
+                        LastName =  "Roberts"
+                    }
+            };
+            return View(model);
+        }
     }
 }
