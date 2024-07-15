@@ -390,5 +390,48 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult DumbbellColumnChart()
+        {
+            DumbbellColumnChartModel model = new DumbbellColumnChartModel();
+            model.Datas = new List<DumbbellColumnDatas>() 
+            {
+                new DumbbellColumnDatas()
+                {
+                    X = "2008",
+                    Y = new List<int>(){ 2800, 4500 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2009",
+                    Y = new List<int>(){ 3200, 4100 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2010",
+                    Y = new List<int>(){ 2950, 7800 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2011",
+                    Y = new List<int>(){ 3000, 4600 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2012",
+                    Y = new List<int>(){ 3500, 4100 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2013",
+                    Y = new List<int>(){ 4500, 6500 }
+                },
+                new DumbbellColumnDatas()
+                {
+                    X = "2014",
+                    Y = new List<int>(){ 4100, 5600 }
+                }
+            };
+            return View(model);
+        }
     }
 }
