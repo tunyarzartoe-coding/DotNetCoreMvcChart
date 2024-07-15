@@ -616,7 +616,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         public IActionResult GroupedStackedColumnChart()
         {
             GroupedStackedColumnChartModel model = new GroupedStackedColumnChartModel();
-            model.Categories = new List<string>() 
+            model.Categories = new List<string>()
             {
                     "Online advertising",
                     "Sales Training",
@@ -625,8 +625,8 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                     "Meetings",
                     "Public relations"
             };
-            model.SeriesData= new List<GroupedSeriesData> 
-            { 
+            model.SeriesData = new List<GroupedSeriesData>
+            {
                 new GroupedSeriesData()
                 {
                     Name = "Q1 Budget",
@@ -650,6 +650,57 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                     Name = "Q2 Actual",
                     Group = "actual",
                     Data = new List<int> (){ 20000, 40000, 25000, 10000, 12000, 28000 }
+                },
+            };
+            return View(model);
+        }
+        public IActionResult RangeColumnChart()
+        {
+            RangeColumnChartModel model = new RangeColumnChartModel();
+            model.SeriesData1 = new List<SeriesData1>
+            {
+                new SeriesData1()
+                {
+                    X="Team A",
+                    Y= new List<int>(){ 1, 5 }
+                },
+                new SeriesData1()
+                {
+                    X="Team B",
+                    Y= new List<int>(){4,6}
+                },
+                new SeriesData1()
+                {
+                    X="Team C",
+                    Y= new List<int>(){5,8}
+                },
+                new SeriesData1()
+                {
+                    X="Team D",
+                    Y= new List<int>(){3,11}
+                },
+            };
+            model.SeriesData2 = new List<SeriesData2>
+            {
+                new SeriesData2()
+                {
+                    X="Team A",
+                    Y= new List<int>(){ 2, 6 }
+                },
+                new SeriesData2()
+                {
+                    X="Team B",
+                    Y= new List<int>(){1,3}
+                },
+                new SeriesData2()
+                {
+                    X="Team C",
+                    Y= new List<int>(){7,8}
+                },
+                new SeriesData2()
+                {
+                    X="Team D",
+                    Y= new List<int>(){5,9}
                 },
             };
             return View(model);

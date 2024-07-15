@@ -1,0 +1,47 @@
+﻿@model RangeColumnChartModel
+
+@{
+    ViewData["Title"] = "Range Column Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<div id="chart"></div>
+@section scripts {
+    <script>
+        const rangeDatas = @Html.Raw(JsonConvert.SerializeObject(Model));
+        const _data1 = rangeDatas.SeriesData1.map(d1 => {
+            return {
+                x: d1.X,
+                y: d1.Y
+            }
+        });
+        const _data2 = rangeDatas.SeriesData2.map(d1 => {
+            return {
+                x: d1.X,
+                y: d1.Y
+            }
+        });
+        var options = {
+            series: [{
+                data: _data1
+            }, {
+                data: _data2
+            }],
+            chart: {
+                type: 'rangeBar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false
+                }
+            },
+            dataLabels: {
+                enabled: true
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
