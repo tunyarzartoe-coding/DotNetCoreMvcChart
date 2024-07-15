@@ -258,5 +258,20 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult RotatedLabelsColumnChart()
+        {
+            RotatedLabelsColumnChartModel model = new RotatedLabelsColumnChartModel();
+            model.Name = "Servings";
+            model.Labels = new List<string>() 
+            {
+                    "Apples", "Oranges", "Strawberries", "Pineapples", "Mangoes", "Bananas",
+                    "Blackberries", "Pears", "Watermelons", "Cherries", "Pomegranates", "Tangerines", "Papayas"
+            };
+            model.Datas = new List<int>() 
+            {
+                    44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35
+            };
+            return View(model);
+        }
     }
 }

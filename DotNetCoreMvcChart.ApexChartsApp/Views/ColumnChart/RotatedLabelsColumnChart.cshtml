@@ -1,0 +1,87 @@
+﻿
+@model RotatedLabelsColumnChartModel
+
+@{
+    ViewData["Title"] = "Column with Rotated Labels";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const _name = @Html.Raw(JsonConvert.SerializeObject(Model.Name));
+        const _data = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+
+        var options = {
+            series: [{
+                name: _name,
+                data: _data
+            }],
+            annotations: {
+                points: [{
+                    x: 'Bananas',
+                    seriesIndex: 0,
+                    label: {
+                        borderColor: '#775DD0',
+                        offsetY: 0,
+                        style: {
+                            color: '#fff',
+                            background: '#775DD0',
+                        },
+                        text: 'Bananas are good',
+                    }
+                }]
+            },
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    columnWidth: '50%',
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                width: 0
+            },
+            grid: {
+                row: {
+                    colors: ['#fff', '#f2f2f2']
+                }
+            },
+            xaxis: {
+                labels: {
+                    rotate: -45
+                },
+                categories: _categories,
+                tickPlacement: 'on'
+            },
+            yaxis: {
+                title: {
+                    text: 'Servings',
+                },
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
+                    inverseColors: true,
+                    opacityFrom: 0.85,
+                    opacityTo: 0.85,
+                    stops: [50, 0, 100]
+                },
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+} 
