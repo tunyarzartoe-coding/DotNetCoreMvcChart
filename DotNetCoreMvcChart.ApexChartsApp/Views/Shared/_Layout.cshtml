@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DotNetCoreMvcChart.ApexChartsApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DotNetCoreMvcChart.ApexChartsApp.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> *@
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/dayjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.0/plugin/quarterOfYear.min.js"></script>
     <script>
@@ -17,20 +18,92 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DotNetCoreMvcChart.ApexChartsApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC Charts App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" id="chartsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-chart-pie me-2"></i> Apex Charts <i class="fa-solid fa-caret-down float-end mt-1 mx-4"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="chartsDropdown" style="width:175px">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Line Charts <i class="fa-solid fa-caret-right float-end mt-1"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="@Url.Action("BasicLineChart", "LineChart")">Basic Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DashedLineChart", "LineChart")">Dashed Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DataLabelLineChart", "LineChart")">Data Label Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GradientLineChart", "LineChart")">Gradient Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("LineWithImageChart", "LineChart")">Image Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("LogarithmicLineChart", "LineChart")">Logarithmic Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("MissingDataLineChart", "LineChart")">Missing Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("RealtimeLineChart", "LineChart")">Realtime Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("StepLineChart", "LineChart")">Gradient Line Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("ZoomableTimeSeriesChart", "LineChart")">Zoomable Time Series Line Chart</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item " href="#"><i class="fas fa-chart-column"></i> Column Charts <i class="fa-solid fa-caret-right float-end mt-1"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="@Url.Action("BasicColumnChart", "ColumnChart")">Basic Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("StackedColumnChart", "ColumnChart")">Stacked Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GroupedColumnChart", "ColumnChart")">Grouped Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DataColorColumnChart", "ColumnChart")">Data Color Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DataLabelColumnChart", "ColumnChart")">Data Label Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DistributedColumnChart", "ColumnChart")">Distributed Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DumbbellColumnChart", "ColumnChart")">Dumbbel Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DynamicLoadedColumnCHart", "ColumnChart")">Dynamic Loaded Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("FullStackedColumnChart", "ColumnChart")">Full Stacked Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GroupedStackedColumnChart", "ColumnChart")">Grouped Stacked Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("MakerColumnChart", "ColumnChart")">Maker Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("NegativeColumnChart", "ColumnChart")">Negative Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("RangeColumnChart", "ColumnChart")">Range Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("RotatedDataLabelsColumnChart", "ColumnChart")">Rotated Data Labels Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("RotatedLabelsColumnChart", "ColumnChart")">Rotated Labels Column Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("StackedColumnWithLineChart", "ColumnChart")">Stacked Column with Column Chart</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item " href="#"><i class="fas fa-chart-bar"></i> Bar Charts <i class="fa-solid fa-caret-right float-end mt-1"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="@Url.Action("BasicBarChart", "BarChart")">Basic Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("PatternedBarChart", "BarChart")">Patterned Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("StackedBarChart", "BarChart")">Stacked Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("DataLabelBarChart", "BarChart")">Data Label Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GroupedBarChart", "BarChart")">Grouped Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GroupedStackedBarChart", "BarChart")">Grouped Stacked Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("ImageBarChart", "BarChart")">Image Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("MakerBarChart", "BarChart")">Maker Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("NegativeBarChart", "BarChart")">Negative Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("ReversedBarChart", "BarChart")">Reversed Bar Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("FullStackedBarChart", "BarChart")">Full Stacked Bar Chart</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item " href="#"><i class="fas fa-chart-pie"></i> Pie Charts<i class="fa-solid fa-caret-right float-end mt-1"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="@Url.Action("DonutUpdateChart", "PieChart")">Donut Update Pie Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("MonochromePieChart", "PieChart")">Monochrome Pie Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("GradientDonutChart", "PieChart")">Gradient Donut Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("PatternDonutChart", "PieChart")">Pattern Donut Pie Chart </a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("SemiDonutChart", "PieChart")">Semi Donut Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("PieWithImageChart", "PieChart")"> Pie With Image Chart</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("SimplePieChart","PieChart")">Simple Pie Chart </a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("PatternDonutChart","PieChart")">Pattern Donut Chart </a></li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -51,10 +124,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

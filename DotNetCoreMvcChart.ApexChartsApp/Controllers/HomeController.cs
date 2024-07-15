@@ -15,7 +15,30 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new ChartSelectionModel
+            {
+                SelectedChartType = "Column",
+                ChartTypes = new List<string> { "Column", "Bar", "Pie", "Line" }
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Index(ChartSelectionModel model)
+        {
+            switch (model.SelectedChartType)
+            {
+                case "Column":
+                    return RedirectToAction("Index", "ColumnChart");
+                case "Bar":
+                    return RedirectToAction("Index", "BarChart");
+                case "Pie":
+                    return RedirectToAction("Index", "PieChart");
+                case "Line":
+                    return RedirectToAction("Index", "LineChart");
+                default:
+                    return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Privacy()

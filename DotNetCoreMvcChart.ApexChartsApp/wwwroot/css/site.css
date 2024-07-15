@@ -86,3 +86,21 @@ select#model {
     cursor: pointer;
     transform: scale(0.8);
 }
+
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+
+.dropdown-item:hover > .dropdown-menu {
+    display: block;
+}

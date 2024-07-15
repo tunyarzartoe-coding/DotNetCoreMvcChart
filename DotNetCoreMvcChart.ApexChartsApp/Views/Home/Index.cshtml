@@ -1,8 +1,42 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to ASP.NetCore MVC Chart App!</h1>
+    <p class="lead">Explore a variety of charts using ApexCharts with ASP.NET MVC. Use the navigation bar above to browse through different chart types.</p>
+    <hr class="my-4">
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Line Charts</h2>
+            <p>Line charts are used to represent data points over time. They are ideal for showing trends.</p>
+            <a class="btn btn-secondary" href="@Url.Action("BasicLineChart", "LineChart")">View Line Charts &raquo;</a>
+        </div>
+        <div class="col-lg-4">
+            <h2>Bar Charts</h2>
+            <p>Bar charts represent data with rectangular bars. They are useful for comparing quantities.</p>
+            <a class="btn btn-secondary" href="@Url.Action("    ", "BarChart")">View Bar Charts &raquo;</a>
+        </div>
+        <div class="col-lg-4">
+            <h2>Pie Charts</h2>
+            <p>Pie charts display data as slices of a circle. They are great for showing proportions.</p>
+            <a class="btn btn-secondary" href="@Url.Action("BasicPieChart", "PieChart")">View Pie Charts &raquo;</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-4">
+            <h2>Column Charts</h2>
+            <p>Column charts use vertical bars to show data. They are useful for showing changes over time.</p>
+            <a class="btn btn-secondary" href="@Url.Action("BasicColumnChart", "ColumnChart")">View Column Charts &raquo;</a>
+        </div>
+        <div class="col-lg-4">
+            <h2>More Charts</h2>
+            <p>Explore more chart types and customize them to fit your data visualization needs.</p>
+            <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Explore More &raquo;</a>
+        </div>
+    </div>
 </div>
