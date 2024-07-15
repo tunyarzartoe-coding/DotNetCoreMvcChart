@@ -1,0 +1,62 @@
+﻿@model DataColorColumnChartModel
+
+@{
+    ViewData["Title"] = "Data Color Column Chart";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const _name = @Html.Raw(JsonConvert.SerializeObject(Model.Name));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
+        const _data = seriesData.map(s=>{
+            return {
+                x : s.X,
+                y : s.Y,
+                fillColor : s.FillColor,
+                strokeColor : s.StrokeColor
+            }
+        })
+
+        var options = {
+            series: [{
+                name: _name,
+                data: _data
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '60%'
+                },
+            },
+            stroke: {
+                width: 0,
+            },
+            dataLabels: {
+                enabled: false
+            },
+            yaxis: {
+                labels: {
+                    formatter: function (val) {
+                        return val / 1000 + 'K $'
+                    }
+                }
+            },
+            fill: {
+                opacity: 1,
+            },
+            xaxis: {
+                type: 'datetime'
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}

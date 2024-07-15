@@ -273,5 +273,63 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult DataColorColumnChart()
+        {
+            DataColorColumnChartModel model = new DataColorColumnChartModel();
+            model.Name = "Yearly Profit";
+            model.Datas = new List<ColumnDataColors> 
+            { 
+                new ColumnDataColors()
+                {
+                    X= "2011",
+                    Y=1292
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2012",
+                    Y=4432
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2013",
+                    Y=5423
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2014",
+                    Y=6653
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2015",
+                    Y=8133,
+                    FillColor="#EB8C87",
+                    StrokeColor ="#C23829"
+                },
+                new ColumnDataColors()
+                {
+                    X= "2016",
+                    Y=7132
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2017",
+                    Y=7332
+
+                },
+                new ColumnDataColors()
+                {
+                    X= "2018",
+                    Y=6553
+
+                },
+            };
+            return View(model);
+        }
     }
 }
