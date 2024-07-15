@@ -1,0 +1,121 @@
+﻿@model StackedColumnWithLineChartModel
+
+@{
+    ViewData["Title"] = "Stacked Column with line Chart";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<div id="chart"></div>
+@section scripts {
+    <script>
+        const _colors = @Html.Raw(JsonConvert.SerializeObject(Model.Colors));
+        const seriesDatas = @Html.Raw(JsonConvert.SerializeObject(Model.SeriesDatas));
+        const _series = seriesDatas.map(s => {
+            return {
+                "name": s.Name,
+                "type": s.Type,
+                "data": s.Data
+            }
+        })
+
+        var options = {
+            series:_series,
+            colors: _colors,
+            chart: {
+                height: '350',
+                width: '90%',
+                type: 'line',
+                stacked: 'true',
+                zoom: {
+                    enabled: true,
+                    type: 'x'
+                }
+            },
+            tooltip: {
+                followCursor: true,
+                shared: false
+            },
+            responsive: [
+                {
+                    breakpoint: 480
+                }
+            ],
+            markers: {
+                size: 0,
+                fillOpacity: 0,
+                strokeOpacity: 0
+            },
+            stroke: {
+                width: 2
+            },
+            xaxis: {
+                categories: [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25
+                ],
+                type: 'numeric',
+                tickPlacement: 'on',
+                tickAmount: 'dataPoints',
+                labels: {
+                    showDuplicates: false,
+                    formatter: function (value) {
+                        return value.toFixed(0)
+                    }
+                }
+            },
+            yaxis: [
+                {
+                    seriesName: 'Line',
+                    opposite: true
+                },
+                {
+                    seriesName: 'Bar1'
+                },
+                {
+                    seriesName: 'Bar1',
+                    show: false
+                },
+                {
+                    seriesName: 'Bar1',
+                    show: false
+                },
+                {
+                    seriesName: 'Bar1',
+                    show: false
+                }
+            ],
+            legend: {
+                showForSingleSeries: true
+            },
+            fill: {
+                opacity: 1
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
