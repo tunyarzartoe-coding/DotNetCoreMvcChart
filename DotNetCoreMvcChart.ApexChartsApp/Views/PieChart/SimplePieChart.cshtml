@@ -4,7 +4,7 @@
     ViewData["Title"] = "Simple Pie Chart";
 }
 
-<h2 class="ms-4">@ViewData["Title"]</h2>
+@* <h2 class="ms-4">@ViewData["Title"]</h2> *@
 
 <div id="chart"></div>
 @section scripts {
@@ -16,6 +16,9 @@
             chart: {
                 width: 380,
                 type: 'pie',
+            },
+            title: {
+                text: "Simple Pie Chart"
             },
             labels: _labels,
             responsive: [{

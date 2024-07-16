@@ -4,7 +4,7 @@
     ViewData["Title"] = "Semi Donut Chart";
 }
 
-<h2 class="ms-4">@ViewData["Title"]</h2>
+@* <h2 class="ms-4">@ViewData["Title"]</h2> *@
 
 <div id="chart"></div><div id="chart"></div>
 
@@ -24,6 +24,9 @@
                     endAngle: 90,
                     offsetY: 10
                 }
+            },
+            title: {
+                text: "Semi Donut Chart"
             },
             grid: {
                 padding: {

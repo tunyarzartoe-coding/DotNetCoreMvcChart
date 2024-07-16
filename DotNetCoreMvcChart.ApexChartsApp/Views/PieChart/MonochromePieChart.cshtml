@@ -4,7 +4,7 @@
     ViewData["Title"] = "Monochrome Pie Chart";
 }
 
-<h2 class="ms-4">@ViewData["Title"]</h2>
+@* <h2 class="text-center">@ViewData["Title"]</h2> *@
 
 <div id="chart"></div>
 
@@ -31,9 +31,9 @@
                     }
                 }
             },
-            // title: {
-            //     text: "Monochrome Pie"
-            // },
+            title: {
+                text: "Monochrome Pie"
+            },
             dataLabels: {
                 formatter(val, opts) {
                     const name = opts.w.globals.labels[opts.seriesIndex]

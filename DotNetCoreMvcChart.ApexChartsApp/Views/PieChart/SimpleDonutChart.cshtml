@@ -5,7 +5,7 @@
     ViewData["Title"] = "Simple Donut Chart";
 }
 
-<h2 class="ms-4">@ViewData["Title"]</h2>
+@* <h2 class="ms-4">@ViewData["Title"]</h2> *@
 
 <div id="chart"></div>
 
@@ -17,6 +17,9 @@
             chart: {
                 width: 380,
                 type: 'donut',
+            },
+            title: {
+                text: "Simple Donut Chart"
             },
             responsive: [{
                 breakpoint: 480,

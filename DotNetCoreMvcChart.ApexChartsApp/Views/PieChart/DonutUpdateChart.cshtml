@@ -1,7 +1,11 @@
 ﻿
 @model DonutUpdateChartModel
+@{
+    ViewData["Title"] = "Donut Update Pie Chart";
+}
 
-<div>
+@* <h2 class="text-center">@ViewData["Title"]</h2> *@
+<div class="chart">
     <div class="chart-wrap">
         <div id="chart"></div>
     </div>
@@ -36,6 +40,9 @@
             },
             dataLabels: {
                 enabled: false
+            },
+            title: {
+                text: "Donut Update Pie Chart",
             },
             responsive: [{
                 breakpoint: 480,
