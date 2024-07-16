@@ -53,7 +53,7 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
                 new SeriesDatas()
                 {
                     Name = "Funnel Series",
-                    Data = new List<int> {1380, 1100, 990, 880, 740, 548, 330, 200},
+                    Data = new List<int> {200, 330, 548, 740, 880, 990, 1100, 1380},
                 }
             };
             return View(model);
