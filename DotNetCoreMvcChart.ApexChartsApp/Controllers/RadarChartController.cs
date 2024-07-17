@@ -19,5 +19,30 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
+        public IActionResult MultipleRadarChart()
+        {
+            MultipleRadarChartModel model = new MultipleRadarChartModel();
+            model.Categories = new List<string>() { "2011", "2012", "2013", "2014", "2015", "2016" };
+            model.SeriesDatas = new List<SeriesDatas>()
+            {
+                new SeriesDatas()
+                {
+                    Name = "Series 1",
+                    Data = new List<int> { 80, 50, 30, 40, 100, 20 }
+                },
+                new SeriesDatas()
+                {
+                    Name = "Series 2",
+                    Data = new List<int> { 20, 30, 40, 80, 20, 80 }
+                },
+                new SeriesDatas()
+                {
+                    Name = "Series 3",
+                    Data = new List<int> { 44, 76, 78, 13, 43, 10 }
+                }
+            };
+            return View(model);
+        }
+
     }
 }
