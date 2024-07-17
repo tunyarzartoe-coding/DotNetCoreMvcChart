@@ -105,6 +105,25 @@ select#model {
     display: block;
 }
 #chart,.chart {
-    max-width: 650px;
+    max-width: 450px;
     margin: 35px auto;
+}
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.03);
+        transition: transform 0.2s ease-in-out;
+    }
+
+
+.card-img-top {
+    height: 100%;
+    object-fit: cover;
+}
+.nav-header {
+    margin-bottom: 100px;
 }

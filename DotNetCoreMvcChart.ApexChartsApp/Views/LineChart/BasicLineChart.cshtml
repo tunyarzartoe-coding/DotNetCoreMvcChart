@@ -1,54 +1,168 @@
 ﻿@model BasicLineChartModel
-
 @{
     ViewData["Title"] = "Basic Line Chart";
 }
 
-<h2 class="text-center">@ViewData["Title"]</h2>
+@* <h2 class="text-center">@ViewData["Title"]</h2>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="chart" class="chart-container"></div>
+        </div>
+        <div class="col-lg-6">
+            <div class="mt-5">
+                <div class="header d-flex justify-content-between align-items-center">
+                    <h5>Code Snippet</h5>
+                    <div class="btn-group" role="group" aria-label="Code Snippet Switch">
+                        <button id="viewButton" class="btn btn-primary active">View Code</button>
+                        <button id="controllerButton" class="btn btn-secondary">Controller Code</button>
+                    </div>
+                </div>
+                <div class="snippet-container">
+                    <div class="snippet mt-3" id="codeSnippet" style="display: block;">
+                        <pre><code>
+const _data = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
+const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+var options = {
+    series: [{
+        name: "Data Points",
+        data: _data
+    }],
+    chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+            enabled: false
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    title: {
+        text: 'Basic Line Chart',
+        align: 'left'
+    },
+    grid: {
+        row: {
+            colors: ['#f3f3f3', 'transparent'],
+            opacity: 0.5
+        },
+    },
+    xaxis: {
+        categories: _categories,
+    }
+};
 
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();</code></pre>
+                        <button class="btn btn-sm btn-outline-secondary copy-button" data-clipboard-target="#codeSnippet">
+                            <i class="bi bi-files"></i> Copy Code
+                        </button>
+                    </div>
+                    <div class="snippet" id="controllerSnippet" style="display: none;">
+                        <pre><code>
+public IActionResult BasicLineChart()
+{
+    BasicLineChartModel model = new BasicLineChartModel();
+    model.Datas = new List<int>() { 10, 41, 35, 51, 49, 62, 69, 91, 148 };
+    model.Categories = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep" };
+    return View(model);
+}</code></pre>
+                        <button class="btn btn-sm btn-outline-secondary copy-button" data-clipboard-target="#controllerSnippet">
+                            <i class="bi bi-files"></i> Copy Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
 
 <div id="chart"></div>
-@section scripts{
+@section scripts {
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script> *@
     <script>
-        const _data =@JsonConvert.SerializeObject(Model.Datas) ;
+        // Toggle code snippets
+        // document.getElementById('viewButton').onclick = function () {
+        //     document.getElementById('codeSnippet').style.display = 'block';
+        //     document.getElementById('controllerSnippet').style.display = 'none';
+        //     this.classList.add('active');
+        //     document.getElementById('controllerButton').classList.remove('active');
+        // };
+
+        // document.getElementById('controllerButton').onclick = function () {
+        //     document.getElementById('codeSnippet').style.display = 'none';
+        //     document.getElementById('controllerSnippet').style.display = 'block';
+        //     this.classList.add('active');
+        //     document.getElementById('viewButton').classList.remove('active');
+        // };
+
+        // // Initialize Clipboard.js
+        // var clipboard = new ClipboardJS('.copy-button');
+
+        // clipboard.on('success', function (e) {
+        //     e.clearSelection();
+        //     showAlert('Code copied to clipboard!', 'success');
+        // });
+
+        // clipboard.on('error', function (e) {
+        //     showAlert('Failed to copy code. Please try again.', 'error');
+        // });
+
+        const _data = @Html.Raw(JsonConvert.SerializeObject(Model.Datas));
         const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
         var options = {
-          series: [{
-            name: "Desktops",
-            data: _data
-        }],
-          chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight'
-        },
-        title: {
-          text: 'Product Trends by Month',
-          align: 'left'
-        },
-        grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'], 
-            opacity: 0.5
-          },
-        },
-        xaxis: {
-          categories: _categories,
-        }
+            series: [{
+                name: "Data Points",
+                data: _data
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            title: {
+                text: 'Basic Line Chart',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'],
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: _categories,
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
-
+        // Show alert function
+        // function showAlert(message, type) {
+        //     const alertDiv = document.createElement('div');
+        //     alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+        //     alertDiv.role = 'alert';
+        //     alertDiv.innerHTML = message + `<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                                 <span aria-hidden="true">&times;</span></button>`;
+        //     document.body.appendChild(alertDiv);
+        //     setTimeout(() => {
+        //         $(alertDiv).alert('close');
+        //     }, 3000);
+        // }
     </script>
 }
+
