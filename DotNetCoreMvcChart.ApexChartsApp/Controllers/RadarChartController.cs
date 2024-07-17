@@ -43,6 +43,19 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
             };
             return View(model);
         }
-
+        public IActionResult PolygonRadarChart()
+        {
+            PolygonRadarChartModel model = new PolygonRadarChartModel();
+            model.Categories = new List<string>() { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            model.SeriesData = new List<Series>()
+            {
+                new Series()
+                {
+                    Name = "Series 1",
+                    Data = new List<int> { 20, 100, 40, 30, 50, 80, 33 }
+                }
+            };
+            return View(model);
+        }
     }
 }

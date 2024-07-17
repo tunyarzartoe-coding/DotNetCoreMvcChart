@@ -1,0 +1,77 @@
+﻿
+@model PolygonRadarChartModel
+
+@{
+    ViewData["Title"] = "Polygon Radar Chart";
+}
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const _categories = @Html.Raw(JsonConvert.SerializeObject(Model.Categories));
+        const seriesData = @Html.Raw(JsonConvert.SerializeObject(Model.SeriesData));
+        const _series = seriesData.map(s => {
+            return {
+                name: s.Name,
+                data: s.Data
+            }
+        })
+        var options = {
+            series:_series,
+            chart: {
+                height: 350,
+                type: 'radar',
+            },
+            dataLabels: {
+                enabled: true
+            },
+            plotOptions: {
+                radar: {
+                    size: 140,
+                    polygons: {
+                        strokeColors: '#e9e9e9',
+                        fill: {
+                            colors: ['#f8f8f8', '#fff']
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'Radar with Polygon Fill'
+            },
+            colors: ['#FF4560'],
+            markers: {
+                size: 4,
+                colors: ['#fff'],
+                strokeColor: '#FF4560',
+                strokeWidth: 2,
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val
+                    }
+                }
+            },
+            xaxis: {
+                categories: _categories
+            },
+            yaxis: {
+                tickAmount: 7,
+                labels: {
+                    formatter: function (val, i) {
+                        if (i % 2 === 0) {
+                            return val
+                        } else {
+                            return ''
+                        }
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+    </script>
+}
