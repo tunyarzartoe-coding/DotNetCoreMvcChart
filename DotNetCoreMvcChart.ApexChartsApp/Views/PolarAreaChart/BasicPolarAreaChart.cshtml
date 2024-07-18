@@ -1,0 +1,41 @@
+﻿@model BasicPolarAreaChartModel
+
+@{
+    ViewData["Title"] = " Basic Polar Area Chart";
+}
+
+<div id="chart"></div>
+@section scripts{
+    <script>
+        const _series = @JsonConvert.SerializeObject(Model.Series);
+        var options = {
+            series: _series,
+            chart: {
+                type: 'polarArea',
+            },
+            stroke: {
+                colors: ['#fff']
+            },
+            title: {
+                text: 'Basic Polar Area Chart'
+            },
+            fill: {
+                opacity: 0.8
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+}
