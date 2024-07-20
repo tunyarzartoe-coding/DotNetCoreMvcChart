@@ -104,8 +104,8 @@ select#model {
 .dropdown-item:hover > .dropdown-menu {
     display: block;
 }
-#chart,.chart {
-    max-width: 450px;
+#chart, .chart {
+    max-width: 650px;
     margin: 35px auto;
 }
 .card {
