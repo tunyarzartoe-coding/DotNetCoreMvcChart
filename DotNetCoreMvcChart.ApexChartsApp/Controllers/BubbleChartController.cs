@@ -8,5 +8,9 @@ namespace DotNetCoreMvcChart.ApexChartsApp.Controllers
         {
             return View();
         }
+        public IActionResult SimpleBubbleChart()
+        {
+            return View();
+        }
     }
 }
